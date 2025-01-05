@@ -5,27 +5,31 @@ import TodoList from "./components/TodoList"
 function App() {
 	// use for variables that the user interacts with
 	const [todos, setTodos] = useState([])
+	const [todoValue, setTodoValue] = useState('')
 
 	function handleAddTodos(newTodo) {
 		const newTodoList = [...todos, newTodo]
 		setTodos(newTodoList)
 	}
 
-	function handleEdit(index) {
+	function handleEditTodo(index) {
+		const curTodo = todos[index]
+		setTodoValue(curTodo)
 
+		handleDeleteTodo(index)
 	}
 
 	function handleDeleteTodo(index) {
 		const newTodoList = todos.filter((todo, todoIndex) => {
 			return todoIndex !== index
-		})
+		}) 
 		setTodos(newTodoList)
 	}
 
 	return (
 		<>
-			<TodoInput handleAddTodos={handleAddTodos} />
-			<TodoList handleDeleteTodo={handleDeleteTodo} todos={todos} />
+			<TodoInput todoValue={todoValue} setTodoValue={setTodoValue} handleAddTodos={handleAddTodos} />
+			<TodoList handleEditTodo={handleEditTodo} handleDeleteTodo={handleDeleteTodo} todos={todos} />
 		</>
 	)
 }
