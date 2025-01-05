@@ -4,10 +4,7 @@ import TodoList from "./components/TodoList"
 
 function App() {
 	// use for variables that the user interacts with
-	const [todos, setTodos] = useState([
-		'Go to the gym',
-		'Eat healthier'
-	])
+	const [todos, setTodos] = useState([])
 
 	function handleAddTodos(newTodo) {
 		const newTodoList = [...todos, newTodo]
@@ -17,7 +14,7 @@ function App() {
 	return (
 		<>
 			<TodoInput handleAddTodos={handleAddTodos} />
-			<TodoList todos={todos} /> 
+			<TodoList todos={todos} />
 		</>
 	)
 }
