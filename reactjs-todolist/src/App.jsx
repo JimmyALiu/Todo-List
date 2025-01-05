@@ -11,10 +11,21 @@ function App() {
 		setTodos(newTodoList)
 	}
 
+	function handleEdit(index) {
+
+	}
+
+	function handleDeleteTodo(index) {
+		const newTodoList = todos.filter((todo, todoIndex) => {
+			return todoIndex !== index
+		})
+		setTodos(newTodoList)
+	}
+
 	return (
 		<>
 			<TodoInput handleAddTodos={handleAddTodos} />
-			<TodoList todos={todos} />
+			<TodoList handleDeleteTodo={handleDeleteTodo} todos={todos} />
 		</>
 	)
 }
